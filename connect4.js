@@ -131,6 +131,8 @@ function handleClick(evt) {
   // TODO: switch currPlayer 1 <-> 2 ✅
   //secondCard = target === firstCard ? null : target;
   currPlayer = currPlayer === 1 ? 2 : 1;
+  const player = document.querySelector('.player');
+  player.innerText = `Player ${currPlayer}`
 }
 
 /** checkForWin: check board cell-by-cell for "does a win start here?" */
