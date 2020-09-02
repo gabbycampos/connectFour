@@ -9,14 +9,6 @@ const WIDTH = 7;
 const HEIGHT = 6;
 
 let currPlayer = 1; // active player: 1 or 2
-/* const board = [ // array of rows, each row is array of cells  (board[y][x])
-  [null, null, null, null, null, null, null],
-  [null, null, null, null, null, null, null],
-  [null, null, null, null, null, null, null],
-  [null, null, null, null, null, null, null],
-  [null, null, null, null, null, null, null],
-  [null, null, null, null, null, null, null],
-];  */
 let board = []
 
 /** makeBoard: create in-JS board structure:
@@ -68,11 +60,10 @@ function makeHtmlBoard() {
 }
 
 /** findSpotForCol: given column x, return top empty y (null if filled) */
-
 function findSpotForCol(x) {
   // TODO: write the real version of this, rather than always returning 0
   for (let y = HEIGHT - 1; y >= 0; y--) {
-    //console.log(y); // 5 4 3 2 1 0
+    //console.log(y,x); // 5 4 3 2 1 0
     if (!board[y][x]) {
       return y;
     }
@@ -93,20 +84,20 @@ function placeInTable(y, x) {
 }
 
 /** endGame: announce game end */
-
 function endGame(msg) {
   // TODO: pop up alert message ✅
   alert(msg);
 }
 
 /** handleClick: handle click of column top to play piece */
-
 function handleClick(evt) {
   // get x from ID of clicked cell
   const x = +evt.target.id;
+  console.log(x);
 
   // get next spot in column (if none, ignore click)
   const y = findSpotForCol(x);
+  //console.log('y', y)
   if (y === null) {
     return;
   }
@@ -136,7 +127,6 @@ function handleClick(evt) {
 }
 
 /** checkForWin: check board cell-by-cell for "does a win start here?" */
-
 function checkForWin() {
   function _win(cells) {
     // Check four cells to see if they're all color of current player
